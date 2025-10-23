@@ -1,9 +1,10 @@
-import {html, css, TemplateResult, CSSResult, LitElement} from 'lit';
-import { customElement } from 'lit/decorators.js';
+import {html, css, TemplateResult, CSSResult, LitElement, PropertyValues} from 'lit';
+import { customElement, queryAll, state } from 'lit/decorators.js';
 import initialConceptMan from '../images/initial_concept_man.png';
 import '../components/course-collapsed-button';
 import '../components/course-button';
 import FreeCourse from '../free-course';
+import CourseCollapsedButton from '../components/course-collapsed-button';
 
 const dados = [
     {
@@ -112,6 +113,29 @@ export default class InitialConcept extends LitElement{
         `;
 
     }
+
+    @queryAll('course-collapsed-button')
+    private _collapsedButtons!: NodeListOf<CourseCollapsedButton>;
+
+    protected override firstUpdated(_changedProperties: PropertyValues): void {
+        
+        this._collapsedButtons.forEach(button => {
+            button.addEventListener('oncollapsed', (event: Event) => {
+                const customEvent = event as CustomEvent;
+                const collapsedState = customEvent.detail.collapsed;
+
+                console.log(this._anyCollapsed());
+            })
+        })
+    }
+
+    private _anyCollapsed(): boolean {
+
+        const totalCollapsed: number = Array.from(this._collapsedButtons).filter(button => button.isCollapsed).length;
+
+        return totalCollapsed > 0 ? true : false;
+    }
+
 
     protected override render(): TemplateResult{
 

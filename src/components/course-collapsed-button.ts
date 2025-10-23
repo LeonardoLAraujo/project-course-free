@@ -108,6 +108,9 @@ export default class CourseCollapsedButton extends LitElement{
 
     public toogleCollapsed(): void {
         if (this._allowClick){
+            this.dispatchEvent(new CustomEvent('oncollapsed', { detail: {
+                collapsed: this.isCollapsed
+            } }));
             this.isCollapsed = !this.isCollapsed;
             this._allowClick = false;
         }
