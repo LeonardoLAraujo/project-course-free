@@ -1,6 +1,7 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import "./pages/course-home";
+import "./components/course-button-back";
 
 export enum TransitionType {
     SlideTransition,
@@ -60,6 +61,8 @@ export default class FreeCourse extends LitElement{
         `;
     }
 
+    static instance: FreeCourse;
+
     private readonly _screenWidth: number = SCREEN_WIDTH;
 
 
@@ -77,6 +80,8 @@ export default class FreeCourse extends LitElement{
     private _allowSlide: boolean = true;
 
     protected override firstUpdated(): void {
+        FreeCourse.instance = this;
+
         this._freeCourseContainer = this.shadowRoot?.querySelector<HTMLDivElement>('.free-course') as HTMLDivElement;
         this._freeCourseContainer.addEventListener('transitionend', () => {
             this._allowSlide = true;
@@ -127,8 +132,7 @@ export default class FreeCourse extends LitElement{
                 }
 
             </style>
-            <button @click=${this.slideBack}>Slide <<</button>
-            <button @click=${this.slideFront}>Slide >></button>
+            <course-button-back></course-button-back>
             <div class="free-course">
                 <course-home></course-home>
                 <div class="test azul"></div>
