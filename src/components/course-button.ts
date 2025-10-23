@@ -31,7 +31,7 @@ export default class CourseButton extends LitElement{
 
     protected override render(): TemplateResult{
         return html`
-            <button>Avançar</button>
+            <button @click=${this.onPressed}>Avançar</button>
         `;
     }
 
