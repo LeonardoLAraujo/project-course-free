@@ -219,7 +219,9 @@ export default class FreeCourse extends LitElement{
             <button @click=${this.applyTransitionNext}>Slide >></button>
             <button @click=${this.toogleTransitionType}>Change TransitionType</button>
             <course-button-back></course-button-back>
+>>>>>>> 46737b76bb60bc7c4d752895574b36a2b24b2328
             <div class="free-course">
+                <course-cerebro></course-cerebro>
                 <course-home></course-home>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
