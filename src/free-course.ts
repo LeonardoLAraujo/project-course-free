@@ -1,6 +1,7 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, query, queryAll, state } from 'lit/decorators.js';
 import "./pages/course-home";
+import "./initial-concept/initial-concept";
 import "./pages/course-cerebro";
 import "./components/course-button-back";
 
@@ -35,7 +36,7 @@ export default class FreeCourse extends LitElement{
 
             .free-course > * {
                 width: 895px;
-                height: 100%;
+                height: 700px;
                 display: inherit;
                 flex-shrink: 0;
             }
@@ -59,6 +60,24 @@ export default class FreeCourse extends LitElement{
             .test.red{
                 background-color: red;
             }
+
+            .animation{
+                animation: fadeAnimation 1s ease-in-out forwards;
+            }
+
+            @keyframes fadeAnimation {
+                0%{
+                    opacity: 1;
+                }
+
+                50%{
+                    opacity: 0;
+                }
+
+                100%{
+                    opacity: 1;
+                }
+            }
         `;
     }
 
@@ -75,19 +94,30 @@ export default class FreeCourse extends LitElement{
 
     @state()
     private _maxSlideValue: number = 0;
+    @query('.free-course')
+    private _freeCourseContainer!: HTMLDivElement;
 
-    private _freeCourseContainer?: HTMLDivElement;
+    private _allowTransiton: boolean = true;
 
-    private _allowSlide: boolean = true;
+    private _currentPageIndex: number = 0;
+
+    @queryAll('.free-course > *')
+    private _pages!: NodeListOf<HTMLElement>;
 
     protected override firstUpdated(): void {
         FreeCourse.instance = this;
 
-        this._freeCourseContainer = this.shadowRoot?.querySelector<HTMLDivElement>('.free-course') as HTMLDivElement;
         this._freeCourseContainer.addEventListener('transitionend', () => {
-            this._allowSlide = true;
+            this._allowTransiton = true;
         });
-        this._maxSlideValue = this._freeCourseContainer?.offsetWidth as number;
+
+        this._freeCourseContainer.addEventListener('animationend', () => {
+            this._freeCourseContainer.className = 'free-course';
+            this._allowTransiton = true;
+            this._changePageVisibilityForFadeEffect(this._currentPageIndex);
+        });
+
+        this._maxSlideValue = this._freeCourseContainer.offsetWidth as number;
     }
 
     public getTransitionType(): TransitionType {
@@ -95,40 +125,82 @@ export default class FreeCourse extends LitElement{
         return this._transitionType;
     }
 
-    public toogleTranstionType(){
+    public toogleTransitionType(){
         if (this._transitionType == TransitionType.SlideTransition){
             this._transitionType = TransitionType.FadeTransition;
+            this._changePageVisibilityForFadeEffect(this._currentPageIndex);
         }else if (this._transitionType == TransitionType.FadeTransition){
             this._transitionType = TransitionType.SlideTransition;
         }
     }
 
-    public fadeIn(): void {
+    private _changePageVisibilityForFadeEffect(pageIndice: number){
 
+        if (this._transitionType === TransitionType.SlideTransition) return;
 
+        Array.from(this._pages).forEach((page, index) => {
+            if (index === pageIndice){
+                page.style.display = 'inherit';
+            }else{
+                page.style.display = 'none';
+            }
+        });
     }
 
-    public fadeOut(): void {
+    public applyTransitionNext(): void {
 
+        if (this._transitionType === TransitionType.SlideTransition){
 
+            this._slideFront();
+
+        }else if (this._transitionType === TransitionType.FadeTransition){
+
+            if (this._currentPageIndex < this._pages.length -1 && this._allowTransiton){
+                this._currentPageIndex ++;
+                this._allowTransiton = false;
+                this._fade();
+            }
+        }
     }
 
-    public slideFront(): void {
-        if (!this._allowSlide) return;
+    public applyTransitionPreviuos(): void {
+
+        if (this._transitionType === TransitionType.SlideTransition){
+
+            this._slideBack();
+
+        }else if (this._transitionType === TransitionType.FadeTransition){
+
+            if (this._currentPageIndex !== 0 && this._allowTransiton){
+                this._currentPageIndex --;
+                this._allowTransiton = false;
+                this._fade();
+            }
+            
+        }
+    }
+
+    private _fade(): void {
+        this._freeCourseContainer.className = 'free-course animation';
+    }
+
+    private _slideFront(): void {
+        if (!this._allowTransiton) return;
         if (this._slideOffset !== -this._maxSlideValue + this._screenWidth){
             this._slideOffset -= this._screenWidth;
-            this._allowSlide = false;
+            this._allowTransiton = false;
+            this._currentPageIndex ++;
         } 
     }
 
-    public slideBack(): void {
-        if (!this._allowSlide) return;
+    private _slideBack(): void {
+        if (!this._allowTransiton) return;
 
         if (this._slideOffset !== 0){
             this._slideOffset += this._screenWidth;
-            this._allowSlide = false;
+            this._allowTransiton = false;
+            this._currentPageIndex --;
         }
-
     }
 
     protected override render(): TemplateResult{
@@ -146,14 +218,18 @@ export default class FreeCourse extends LitElement{
 
             </style>
             <div class="free-course">
-                <course-cerebro></course-cerebro>
                 <course-home></course-home>
+                <initial-concept></initial-concept>
+                <course-cerebro></course-cerebro>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
                 <div class="test orange"></div>
                 <div class="test grey"></div>
                 <div class="test red"></div>
             </div>
+            <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
+            <button @click=${this.applyTransitionNext}>Slide >></button>
+            <button @click=${this.toogleTransitionType}>Change TransitionType</button>-->
         `;
     }
 
