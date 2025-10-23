@@ -26,7 +26,7 @@ export default class CourseButtonBack extends LitElement{
 
     protected override render(): TemplateResult{
         return html`
-            <div class="buttonBack" @click=${() => {FreeCourse.instance.slideBack()}}>
+            <div class="buttonBack" @click=${() => {FreeCourse.instance.applyTransitionPreviuos()}}>
                 <ecv-icon .icon=${IconTypes.ArrowBack} .iconStyle=${{size: "25px", weight: FontWeight.Bold}}></ecv-icon>
             </div>
         `;

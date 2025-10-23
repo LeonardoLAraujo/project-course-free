@@ -4,6 +4,7 @@ import IMAGE_CEREBRO from "../images/cerebro.png";
 import IMAGE_LIGHT from "../images/light.png";
 import "../components/course-button";
 import "../components/course-button-back";
+import FreeCourse from '../free-course';
 
 @customElement('course-cerebro')
 export default class NomeClass extends LitElement{

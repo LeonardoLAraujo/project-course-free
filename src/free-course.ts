@@ -1,6 +1,7 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement, query, queryAll, state } from 'lit/decorators.js';
 import "./pages/course-home";
+import "./initial-concept/initial-concept";
 import "./pages/course-cerebro";
 import "./components/course-button-back";
 
@@ -35,7 +36,7 @@ export default class FreeCourse extends LitElement{
 
             .free-course > * {
                 width: 895px;
-                height: 100%;
+                height: 700px;
                 display: inherit;
                 flex-shrink: 0;
             }
@@ -216,19 +217,19 @@ export default class FreeCourse extends LitElement{
                 }
 
             </style>
-            <button @click=${this.applyTransitionPreviuos}>Slide <<</button>
-            <button @click=${this.applyTransitionNext}>Slide >></button>
-            <button @click=${this.toogleTransitionType}>Change TransitionType</button>
-            <course-button-back></course-button-back>
             <div class="free-course">
-                <course-cerebro></course-cerebro>
                 <course-home></course-home>
+                <initial-concept></initial-concept>
+                <course-cerebro></course-cerebro>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
                 <div class="test orange"></div>
                 <div class="test grey"></div>
                 <div class="test red"></div>
             </div>
+            <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
+            <button @click=${this.applyTransitionNext}>Slide >></button>
+            <button @click=${this.toogleTransitionType}>Change TransitionType</button>-->
         `;
     }
 

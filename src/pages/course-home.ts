@@ -34,7 +34,7 @@ export default class CourseHome extends LitElement{
                 }
             </style>
             <div class="home">
-                <course-button .onPressed=${() => {FreeCourse.instance.slideFront()}}></course-button>
+                <course-button .onPressed=${() => {FreeCourse.instance.applyTransitionNext()}}></course-button>
             </div>
         `;
     }

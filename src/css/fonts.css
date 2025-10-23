@@ -4,6 +4,11 @@
 }
 
 @font-face {
+    font-family: RobotoBold;
+    src: url("../fonts/Roboto/Roboto-Bold.ttf");
+}
+
+@font-face {
     font-family: RobotoBlack;
     src: url("../fonts/Roboto/Roboto-Black.ttf");
 }
@@ -11,4 +16,9 @@
 @font-face {
     font-family: RobotoBlackItalic;
     src: url("../fonts/Roboto/Roboto-BlackItalic.ttf");
+}
+
+@font-face {
+    font-family: RobotoLight;
+    src: url("../fonts/Roboto/Roboto-Light.ttf");
 }
