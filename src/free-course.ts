@@ -89,6 +89,14 @@ export default class FreeCourse extends LitElement{
         return this._transitionType;
     }
 
+    public toogleTranstionType(){
+        if (this._transitionType == TransitionType.SlideTransition){
+            this._transitionType = TransitionType.FadeTransition;
+        }else if (this._transitionType == TransitionType.FadeTransition){
+            this._transitionType = TransitionType.SlideTransition;
+        }
+    }
+
     public fadeIn(): void {
 
 
@@ -126,9 +134,14 @@ export default class FreeCourse extends LitElement{
                     left: ${this._slideOffset}px;
                 }
 
+                .free-course > * {
+                    position: ${this._transitionType == TransitionType.SlideTransition ? 'static' : 'absolute'};
+                }
+
             </style>
             <button @click=${this.slideBack}>Slide <<</button>
             <button @click=${this.slideFront}>Slide >></button>
+            <button @click=${this.toogleTranstionType}>Change TransitionType</button>
             <div class="free-course">
                 <course-home></course-home>
                 <div class="test azul"></div>
