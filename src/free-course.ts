@@ -1,6 +1,7 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement } from 'lit/decorators.js';
 import './step-screen/step-screen';
+import "./pages/course-home";
 
 @customElement('free-course')
 export default class FreeCourse extends LitElement{
@@ -25,8 +26,7 @@ export default class FreeCourse extends LitElement{
     protected override render(): TemplateResult{
         return html`
             <div class="free-course">
-                <step-screen color="red"></step-screen>
-                <step-screen color="blue"></step-screen>
+                <course-home></course-home>
             </div>
         `;
     }
