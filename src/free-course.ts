@@ -95,6 +95,14 @@ export default class FreeCourse extends LitElement{
         return this._transitionType;
     }
 
+    public toogleTranstionType(){
+        if (this._transitionType == TransitionType.SlideTransition){
+            this._transitionType = TransitionType.FadeTransition;
+        }else if (this._transitionType == TransitionType.FadeTransition){
+            this._transitionType = TransitionType.SlideTransition;
+        }
+    }
+
     public fadeIn(): void {
 
 
@@ -132,7 +140,18 @@ export default class FreeCourse extends LitElement{
                     left: ${this._slideOffset}px;
                 }
 
+                .free-course > * {
+                    position: ${this._transitionType == TransitionType.SlideTransition ? 'static' : 'absolute'};
+                }
+
             </style>
+<<<<<<< HEAD
+=======
+            <button @click=${this.slideBack}>Slide <<</button>
+            <button @click=${this.slideFront}>Slide >></button>
+            <button @click=${this.toogleTranstionType}>Change TransitionType</button>
+            <course-button-back></course-button-back>
+>>>>>>> 46737b76bb60bc7c4d752895574b36a2b24b2328
             <div class="free-course">
                 <course-cerebro></course-cerebro>
                 <course-home></course-home>
