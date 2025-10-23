@@ -1,6 +1,7 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement, state } from 'lit/decorators.js';
 import "./pages/course-home";
+import "./pages/course-cerebro";
 import "./components/course-button-back";
 
 export enum TransitionType {
@@ -132,8 +133,8 @@ export default class FreeCourse extends LitElement{
                 }
 
             </style>
-            <course-button-back></course-button-back>
             <div class="free-course">
+                <course-cerebro></course-cerebro>
                 <course-home></course-home>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
