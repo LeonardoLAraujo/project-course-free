@@ -1,5 +1,6 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement, state } from 'lit/decorators.js';
+import "./pages/course-home";
 
 export enum TransitionType {
     SlideTransition,
@@ -7,6 +8,7 @@ export enum TransitionType {
 }
 
 const SCREEN_WIDTH: number = 895;
+
 
 @customElement('free-course')
 export default class FreeCourse extends LitElement{
@@ -29,7 +31,7 @@ export default class FreeCourse extends LitElement{
                 transition: left 0.5s ease-out;
             }
 
-            .test{
+            .free-course > * {
                 width: 895px;
                 height: 100%;
                 display: inherit;
@@ -128,6 +130,7 @@ export default class FreeCourse extends LitElement{
             <button @click=${this.slideBack}>Slide <<</button>
             <button @click=${this.slideFront}>Slide >></button>
             <div class="free-course">
+                <course-home></course-home>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
                 <div class="test orange"></div>
