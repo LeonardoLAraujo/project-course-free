@@ -6,6 +6,7 @@ import "../components/course-button";
 import "../components/course-button-back";
 import "../components/course-card-cerebro";
 import { FontWeight, IconTypes } from 'ecv-component';
+import FreeCourse from '../free-course';
 
 export type CardCerebro = {
     title: string,
@@ -351,7 +352,7 @@ export default class NomeClass extends LitElement{
                         <div class="cerebro__cards">
                             ${this._generetaCerebro()}
                         </div>
-                        <course-button></course-button>
+                        <course-button .onPressed=${() => {FreeCourse.instance.applyTransitionNext()}}></course-button>
                         <div class="cerebro__light" @click=${this._openCuriosities}>
                             <img src=${IMAGE_LIGHT}>
                         </div>
