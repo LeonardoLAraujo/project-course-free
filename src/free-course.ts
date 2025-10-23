@@ -4,6 +4,7 @@ import "./pages/course-home";
 import "./initial-concept/initial-concept";
 import "./pages/course-cerebro";
 import "./components/course-button-back";
+import "./pages/course-possibility";
 
 export enum TransitionType {
     SlideTransition,
@@ -218,6 +219,7 @@ export default class FreeCourse extends LitElement{
 
             </style>
             <div class="free-course">
+                <course-possibility></course-possibility>
                 <course-home></course-home>
                 <initial-concept></initial-concept>
                 <course-cerebro></course-cerebro>
