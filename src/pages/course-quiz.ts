@@ -2,6 +2,7 @@ import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement } from 'lit/decorators.js';
 import QUIZ from "../images/quiz.png";
 import "../components/course-button";
+import "../components/course-button-back";
 
 @customElement('course-quiz')
 export default class CourseQuiz extends LitElement{
@@ -17,10 +18,19 @@ export default class CourseQuiz extends LitElement{
                 display: flex;
                 align-items: flex-end;
                 justify-content: center;
+                position: relative;
             }
 
             course-button{
                 margin-bottom: 4rem;
+            }
+
+            course-button-back{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: #fff;
+                border-radius: 50%;
             }
         `;
     }
@@ -33,6 +43,7 @@ export default class CourseQuiz extends LitElement{
                 }
             </style>
             <div class="quiz">
+                <course-button-back></course-button-back>
                 <course-button></course-button>
             </div>
         `;
