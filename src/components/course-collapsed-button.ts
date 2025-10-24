@@ -15,6 +15,7 @@ export default class CourseCollapsedButton extends LitElement{
                 user-select: none;
                 -webkit-user-select: none;
                 -webkit-user-drag: none;
+                max-width: 532px;
             }
 
             .course-collapsed-button{
@@ -27,8 +28,7 @@ export default class CourseCollapsedButton extends LitElement{
                 align-items: center;
                 background-color: #031B30;
                 color: white;
-                height: 39px;
-                padding: 0 20px;
+                padding: 10px 20px;
                 justify-content: space-between;
                 box-shadow: 0 4px 4px 0 #00000025;
                 margin-bottom: 4px;
@@ -49,7 +49,6 @@ export default class CourseCollapsedButton extends LitElement{
             .course-collapsed-button__text{
                 background-color: #F5F5F5;
                 box-shadow: 0 4px 4px 0 #00000025;
-                max-width: 474px;
                 font-size: 14px;
                 font-family: RobotoLight;
                 overflow: hidden;
@@ -62,6 +61,25 @@ export default class CourseCollapsedButton extends LitElement{
                 height: 135px;
                 overflow: auto;
             }
+
+            .text__text::-webkit-scrollbar{
+                width: 10px;
+                height: 10px;
+            }
+
+            .text__text::-webkit-scrollbar-track{
+                background: #FBFCFF;
+                border: 1px solid #0000002c;
+                box-shadow: 0 4px 4px 0 #00000025;
+            }
+
+            .text__text::-webkit-scrollbar-thumb{
+                background: #031B30;
+            }
+
+            .text__text::-webkit-scrollbar-thumb:hover{
+                background: #3C97FC;
+            }
         
         `;
 
@@ -70,8 +88,8 @@ export default class CourseCollapsedButton extends LitElement{
     @property({type: String})
     public label: string = '';
 
-    @property({type: String})
-    public text: string = '';
+    @property({type: Object})
+    public text: TemplateResult | string = '';
 
     @property({type: Boolean})
     public isCollapsed: boolean = true;

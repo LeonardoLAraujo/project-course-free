@@ -5,6 +5,7 @@ import "./initial-concept/initial-concept";
 import "./pages/course-cerebro";
 import "./components/course-button-back";
 import "./pages/course-possibility";
+import "./bitmap-vector/bitmap-vector";
 
 export enum TransitionType {
     SlideTransition,
@@ -219,10 +220,11 @@ export default class FreeCourse extends LitElement{
 
             </style>
             <div class="free-course">
-                <course-possibility></course-possibility>
                 <course-home></course-home>
                 <initial-concept></initial-concept>
                 <course-cerebro></course-cerebro>
+                <course-possibility></course-possibility>
+                <bitmap-vector></bitmap-vector>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
                 <div class="test orange"></div>
