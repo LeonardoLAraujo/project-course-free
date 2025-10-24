@@ -1,5 +1,5 @@
 import {LitElement, html, css, TemplateResult, CSSResult, PropertyValues} from 'lit';
-import { customElement, state } from 'lit/decorators.js';
+import { customElement, query, state } from 'lit/decorators.js';
 import rgbModeImage from '../images/rgb_mode.png';
 import cmykModeImage from '../images/cmyk_mode.png';
 import pantoneModeImage from '../images/pantone_mode.png';
@@ -8,7 +8,7 @@ type RenderData = {
     renderImage: string;
     renderLabelText: string;
     renderTitle: string;
-    renderText: string;
+    renderText: TemplateResult | string;
 }
 
 @customElement('color-modes')
@@ -99,23 +99,49 @@ export default class ColorModes extends LitElement{
             .info__label{
                 top: 270px;
                 left: 91px;
+                font-family: Robotobold;
+                font-size: 16px;
             }
 
             .info__title{
-                left: 338px;
-                top: 50px;
+                left: 350px;
+                top: 20px;
+                font-family: RobotoBold;
+                font-size: 24px;
             }
 
             .info__text{
-                left: 338px;
-                top: 100px;
+                left: 350px;
+                top: 70px;
                 max-width: 429px;
+                font-size: 14px;
             }
 
             course-button{
                 position: absolute;
                 top: 635px;
                 left: 364px;
+            }
+
+            .fadeTransition{
+                animation-name: fade;
+                animation-duration: 1s;
+                animation-fill-mode: forwards;
+                animation-timing-function: ease-out;
+            }
+
+            @keyframes fade {
+                0% {
+                    opacity: 1;
+                }
+
+                50%{
+                    opacity: 0;
+                }
+
+                100%{
+                    opacity: 1;
+                }
             }
         `;
 
@@ -152,14 +178,18 @@ export default class ColorModes extends LitElement{
             renderImage: pantoneModeImage,
             renderLabelText: '',
             renderTitle: 'Pantone',
-            renderText: `
-                Pantone é uma empresa especializada na produção de tintas padronizadas para impressos em geral. 
-                A chamada escala Pantone é o sistema desenvolvido por eles em que as cores oferecidas são produzidas 
-                sempre com a mesma precisão (combinação perfeitamente calculada entre os pigmentos), garantindo 
-                que os tons sejam sempre iguais.
-                Empresas de grande porte que precisam padronizar as suas cores utilizam deste padrão, 
-                por ser mais exato que o sistema CMKY que apresenta considerável variação de tom em 
-                cada impressão/impressora.
+            renderText: html`
+                <p>
+                    Pantone é uma empresa especializada na produção de tintas padronizadas para impressos em geral. 
+                    A chamada escala Pantone é o sistema desenvolvido por eles em que as cores oferecidas são produzidas 
+                    sempre com a mesma precisão (combinação perfeitamente calculada entre os pigmentos), garantindo 
+                    que os tons sejam sempre iguais.
+                </p>
+                <p>
+                    Empresas de grande porte que precisam padronizar as suas cores utilizam deste padrão, 
+                    por ser mais exato que o sistema CMKY que apresenta considerável variação de tom em 
+                    cada impressão/impressora.
+                </p>
             `
         }
     ];
@@ -167,9 +197,16 @@ export default class ColorModes extends LitElement{
     @state()
     private _currentRenderData!: RenderData;
 
+    @query('.painel__info')
+    private _painelInfo!: HTMLDivElement;
+
     protected override firstUpdated(_changedProperties: PropertyValues): void {
         
         this._currentRenderData = this._renderDataModes[0];
+
+        this._painelInfo.addEventListener('animationend', () => {
+            this._painelInfo.className = 'painel__info';
+        });
     }
 
     private _renderInfo(): TemplateResult {
@@ -188,8 +225,13 @@ export default class ColorModes extends LitElement{
         const currentButton = (event.target as HTMLDivElement)
         const index = parseInt(currentButton.getAttribute("mode-index") as string);
         const painelButtons = this.shadowRoot?.querySelectorAll<HTMLDivElement>('.painel__buttons > div');
+        const FADE_ANIMATION_DELAY: number = 400;
 
-        this._currentRenderData = this._renderDataModes[index];
+        this._painelInfo.className = 'painel__info fadeTransition';
+
+        setTimeout(() => {
+            this._currentRenderData = this._renderDataModes[index];
+        }, FADE_ANIMATION_DELAY);
 
         painelButtons?.forEach(button => {
             if (button.classList.contains('selected')){
