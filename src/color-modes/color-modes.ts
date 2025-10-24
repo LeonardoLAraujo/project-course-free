@@ -4,18 +4,11 @@ import rgbModeImage from '../images/rgb_mode.png';
 import cmykModeImage from '../images/cmyk_mode.png';
 import pantoneModeImage from '../images/pantone_mode.png';
 
-enum ColorModesType {
-    RGB,
-    CMYK,
-    PANTONE
-}
-
 type RenderData = {
     renderImage: string;
     renderLabelText: string;
     renderTitle: string;
     renderText: string;
-
 }
 
 @customElement('color-modes')
@@ -54,6 +47,75 @@ export default class ColorModes extends LitElement{
                 left: 44px;
                 top: 131px;
                 max-width: 690px;
+            }
+
+            .color-modes__painel{
+                position: relative;
+                width: 819px;
+                height: 410px;
+                top: 204px;
+                left: 38px;
+                background-color: #031B30;
+                color: white;
+            }
+
+            .painel__buttons{
+                display: flex;
+            }
+
+            .painel__buttons > div{
+                
+                width: 273px;
+                height: 60px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 4px 4px 0 #00000025;
+                cursor: pointer;
+                font-family: RobotoBold;
+            }
+
+            .painel__buttons > div:hover{
+                background-color: #031B30!important;
+            }
+
+            .painel__buttons > div:not(.selected){
+                background-color: #042745;
+            }
+
+            .painel__buttons > div.selected{
+                background-color: #031B30;
+            }
+
+            .painel__info{
+                position: relative;
+                height: calc(100% - 60px);
+            }
+
+            .painel__info > *{
+                position: absolute;
+            }
+
+            .info__label{
+                top: 270px;
+                left: 91px;
+            }
+
+            .info__title{
+                left: 338px;
+                top: 50px;
+            }
+
+            .info__text{
+                left: 338px;
+                top: 100px;
+                max-width: 429px;
+            }
+
+            course-button{
+                position: absolute;
+                top: 635px;
+                left: 364px;
             }
         `;
 
@@ -103,9 +165,6 @@ export default class ColorModes extends LitElement{
     ];
 
     @state()
-    private _currentColorMode: ColorModesType = ColorModesType.RGB;
-
-    @state()
     private _currentRenderData!: RenderData;
 
     protected override firstUpdated(_changedProperties: PropertyValues): void {
@@ -117,10 +176,10 @@ export default class ColorModes extends LitElement{
 
         return html`
             <div class="painel__info">
-                <img src=${this._currentRenderData?.renderImage}>
-                <p>${this._currentRenderData?.renderLabelText}</p>
-                <h2>${this._currentRenderData?.renderTitle}</h2>
-                <p>${this._currentRenderData?.renderText}</p>
+                <img class="info__image" src=${this._currentRenderData?.renderImage}>
+                <p class="info__label">${this._currentRenderData?.renderLabelText}</p>
+                <h2 class="info__title">${this._currentRenderData?.renderTitle}</h2>
+                <p class="info__text">${this._currentRenderData?.renderText}</p>
             </div>
         `;
     }
@@ -128,13 +187,39 @@ export default class ColorModes extends LitElement{
     private _changeColorMode(event: Event): void{
         const currentButton = (event.target as HTMLDivElement)
         const index = parseInt(currentButton.getAttribute("mode-index") as string);
+        const painelButtons = this.shadowRoot?.querySelectorAll<HTMLDivElement>('.painel__buttons > div');
 
         this._currentRenderData = this._renderDataModes[index];
+
+        painelButtons?.forEach(button => {
+            if (button.classList.contains('selected')){
+                button.classList.remove('selected');
+            }
+        });
+
+        if (!currentButton.classList.contains('selected')){
+            currentButton.classList.add('selected');
+        }
+
     }
 
     protected override render(): TemplateResult{
 
+        const imageTopPosition = this._currentRenderData?.renderTitle === 'RGB' ? '0' :
+        this._currentRenderData?.renderTitle === 'CMYK' ? '30' : '86';
+        
+        const imageLeftPosition = this._currentRenderData?.renderTitle === 'RGB' ? '0' :
+        this._currentRenderData?.renderTitle === 'CMYK' ? '30' : '0';
+
         return html`
+        <style>
+
+            .info__image{
+                top: ${imageTopPosition}px;
+                left: ${imageLeftPosition}px;
+            }
+
+        </style>
         <div class="color-modes">
             <course-button-back></course-button-back>
             <h1 class="color-modes__title">Modos de Cor</h1>
@@ -147,17 +232,17 @@ export default class ColorModes extends LitElement{
             </p>
             <div class="color-modes__painel">
                 <div class="painel__buttons">
-                    <div class="buttons__rgb" mode-index="0" @click=${this._changeColorMode}>RGB</div>
+                    <div class="buttons__rgb selected" mode-index="0" @click=${this._changeColorMode}>RGB</div>
                     <div class="buttons__cmyk" mode-index="1" @click=${this._changeColorMode}>CMYK</div>
                     <div class="buttons__pantone" mode-index="2" @click=${this._changeColorMode}>Sistema Pantone</div>
                 </div>
                 ${this._renderInfo()}
             </div>
+            <course-button></course-button>
         </div>
         `;
 
     }
-
 
 }
 

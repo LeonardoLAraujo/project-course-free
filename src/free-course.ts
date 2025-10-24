@@ -7,6 +7,8 @@ import "./components/course-button-back";
 import "./pages/course-possibility";
 import "./bitmap-vector/bitmap-vector";
 import "./color-modes/color-modes";
+import "./pages/course-quiz";
+import "./pages/course-quiz-question";
 
 export enum TransitionType {
     SlideTransition,
@@ -234,6 +236,7 @@ export default class FreeCourse extends LitElement{
                 <course-cerebro></course-cerebro>
                 <course-possibility></course-possibility>
                 <bitmap-vector></bitmap-vector>
+                <color-modes></color-modes>
                 <course-quiz></course-quiz>
                 <course-quiz-question></course-quiz-question>
             </div>
