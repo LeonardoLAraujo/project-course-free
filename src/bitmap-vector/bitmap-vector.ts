@@ -86,6 +86,12 @@ export default class BitmapVector extends InitialConcept{
             course-collapsed-button{
                 grid-area: right-side;
             }
+
+            course-button{
+                position: absolute;
+                top: 635px;
+                left: 485px;
+            }
         `;
 
     }
@@ -162,6 +168,7 @@ export default class BitmapVector extends InitialConcept{
                 <div class="bitmap-vector__collapsedButtonsContainer">
                     ${this.createCollapsedButtons()}
                 </div>
+                ${this.createAdvanceButton()}
             </div>
         `;
 

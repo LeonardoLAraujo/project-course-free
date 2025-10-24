@@ -9,6 +9,7 @@ import "./bitmap-vector/bitmap-vector";
 import "./pages/course-quiz";
 import "./pages/course-quiz-question";
 import "./pages/course-reference";
+import "./color-modes/color-modes";
 
 export enum TransitionType {
     SlideTransition,
@@ -30,6 +31,9 @@ export default class FreeCourse extends LitElement{
                 height: 700px;
                 overflow: hidden;
                 position: relative;
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
             }
 
             .free-course{
@@ -46,6 +50,9 @@ export default class FreeCourse extends LitElement{
                 display: inherit;
                 flex-shrink: 0;
                 overflow: hidden;
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
             }
 
             .test.azul{
