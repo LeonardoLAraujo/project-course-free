@@ -8,6 +8,7 @@ import "./pages/course-possibility";
 import "./bitmap-vector/bitmap-vector";
 import "./pages/course-quiz";
 import "./pages/course-quiz-question";
+import "./pages/course-reference";
 
 export enum TransitionType {
     SlideTransition,
@@ -231,6 +232,7 @@ export default class FreeCourse extends LitElement{
                 <bitmap-vector></bitmap-vector>
                 <course-quiz></course-quiz>
                 <course-quiz-question></course-quiz-question>
+                <course-reference></course-reference>
             </div>
             <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
             <button @click=${this.applyTransitionNext}>Slide >></button>
