@@ -3,4 +3,7 @@
     margin: 0;
     font-family: RobotoRegular;
     user-select: none;
+    width: 895px;
+    height: 700px;
+    overflow: hidden;
 }

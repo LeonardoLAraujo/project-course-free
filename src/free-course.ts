@@ -42,6 +42,7 @@ export default class FreeCourse extends LitElement{
                 height: 700px;
                 display: inherit;
                 flex-shrink: 0;
+                overflow: hidden;
             }
 
             .test.azul{
