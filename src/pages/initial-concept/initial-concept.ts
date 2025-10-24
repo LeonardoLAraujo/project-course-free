@@ -1,10 +1,10 @@
 import {html, css, TemplateResult, CSSResult, LitElement, PropertyValues} from 'lit';
 import { customElement, queryAll } from 'lit/decorators.js';
-import initialConceptMan from '../images/initial_concept_man.png';
-import '../components/course-collapsed-button';
-import '../components/course-button';
-import FreeCourse from '../free-course';
-import CourseCollapsedButton from '../components/course-collapsed-button';
+import initialConceptMan from '../../images/initial_concept_man.png';
+import '../../components/course-collapsed-button';
+import '../../components/course-button';
+import FreeCourse from '../../free-course';
+import CourseCollapsedButton from '../../components/course-collapsed-button';
 
 export type CollapsedButtonData = {
     label: TemplateResult | string;
@@ -50,6 +50,7 @@ export default class InitialConcept extends LitElement{
             .leftside__man{
                 left: -9px;
                 top: 12px;
+                -webkit-user-drag: none;
             }
 
             h3{

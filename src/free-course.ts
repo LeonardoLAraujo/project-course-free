@@ -1,15 +1,15 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement, query, queryAll, state } from 'lit/decorators.js';
 import "./pages/course-home";
-import "./initial-concept/initial-concept";
+import "./pages/initial-concept/initial-concept";
 import "./pages/course-cerebro";
 import "./components/course-button-back";
 import "./pages/course-possibility";
-import "./bitmap-vector/bitmap-vector";
+import "./pages/bitmap-vector/bitmap-vector";
 import "./pages/course-quiz";
 import "./pages/course-quiz-question";
 import "./pages/course-reference";
-import "./color-modes/color-modes";
+import "./pages/color-modes/color-modes";
 import "./pages/course-quiz";
 import "./pages/course-quiz-question";
 

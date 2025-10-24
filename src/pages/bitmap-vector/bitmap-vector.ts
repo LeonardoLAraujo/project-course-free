@@ -1,10 +1,10 @@
 import {html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement } from 'lit/decorators.js';
 import InitialConcept, { CollapsedButtonData } from '../initial-concept/initial-concept';
-import psLogo from '../images/ps_logo.png';
-import aiLogo from '../images/ai_logo.png';
-import idLogo from '../images/id_logo.png';
-import yellowDownArrow from '../images/yellow_dow_arrow.png';
+import psLogo from '../../images/ps_logo.png';
+import aiLogo from '../../images/ai_logo.png';
+import idLogo from '../../images/id_logo.png';
+import yellowDownArrow from '../../images/yellow_dow_arrow.png';
 
 @customElement('bitmap-vector')
 export default class BitmapVector extends InitialConcept{
@@ -45,6 +45,7 @@ export default class BitmapVector extends InitialConcept{
                 position: absolute;
                 left: 237px;
                 top: 57px;
+                -webkit-user-drag: none;
             }
 
             .bitmap-vector__logoContainer{
@@ -54,6 +55,10 @@ export default class BitmapVector extends InitialConcept{
                 top: 94px;
                 left: 19px;
                 grid-area: left-side;
+            }
+
+            .bitmap-vector__logoContainer > img{
+                -webkit-user-drag: none;
             }
 
             .bitmap-vector__rightTitle{

@@ -1,8 +1,8 @@
 import {LitElement, html, css, TemplateResult, CSSResult, PropertyValues} from 'lit';
 import { customElement, query, state } from 'lit/decorators.js';
-import rgbModeImage from '../images/rgb_mode.png';
-import cmykModeImage from '../images/cmyk_mode.png';
-import pantoneModeImage from '../images/pantone_mode.png';
+import rgbModeImage from '../../images/rgb_mode.png';
+import cmykModeImage from '../../images/cmyk_mode.png';
+import pantoneModeImage from '../../images/pantone_mode.png';
 
 type RenderData = {
     renderImage: string;
@@ -18,6 +18,12 @@ export default class ColorModes extends LitElement{
     static override get styles(): CSSResult{
 
         return css`
+
+            :host{
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
+            }
 
             .color-modes{
                 position: relative;
@@ -45,7 +51,7 @@ export default class ColorModes extends LitElement{
                 font-family: RobotoRegular;
                 font-size: 14px;
                 left: 44px;
-                top: 131px;
+                top: 118px;
                 max-width: 690px;
             }
 
@@ -94,6 +100,10 @@ export default class ColorModes extends LitElement{
 
             .painel__info > *{
                 position: absolute;
+            }
+
+            .info__image{
+                -webkit-user-drag: none;
             }
 
             .info__label{
@@ -225,13 +235,17 @@ export default class ColorModes extends LitElement{
         const currentButton = (event.target as HTMLDivElement)
         const index = parseInt(currentButton.getAttribute("mode-index") as string);
         const painelButtons = this.shadowRoot?.querySelectorAll<HTMLDivElement>('.painel__buttons > div');
-        const FADE_ANIMATION_DELAY: number = 400;
+        const UPDATE_DATA_DELAY: number = 400;
+
+        if (currentButton.classList.contains('selected')){
+            return;
+        }
 
         this._painelInfo.className = 'painel__info fadeTransition';
 
         setTimeout(() => {
             this._currentRenderData = this._renderDataModes[index];
-        }, FADE_ANIMATION_DELAY);
+        }, UPDATE_DATA_DELAY);
 
         painelButtons?.forEach(button => {
             if (button.classList.contains('selected')){
