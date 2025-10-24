@@ -127,6 +127,7 @@ export default class CousePossibility extends LitElement{
                 width: 256px;
                 height: 469px;
                 object-fit: cover;
+                -webkit-user-drag: none;
             }
 
             .content__edition p{

@@ -95,6 +95,7 @@ export default class NomeClass extends LitElement{
                 width: 423px;
                 align-self: center;
                 margin: 0.7rem 0rem;
+                -webkit-user-drag: none;
             }
 
             course-button{
@@ -117,6 +118,10 @@ export default class NomeClass extends LitElement{
 
             .cerebro__light:hover{
                 opacity: 0.8;
+            }
+
+            .cerebro__light img{
+                -webkit-user-drag: none;
             }
 
             .cerebro__cards{
@@ -174,6 +179,7 @@ export default class NomeClass extends LitElement{
 
             .information__light img{
                 width: 64px;
+                -webkit-user-drag: none;
             }
 
             .information__text{

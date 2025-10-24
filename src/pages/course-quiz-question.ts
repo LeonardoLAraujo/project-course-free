@@ -59,6 +59,7 @@ export default class CourseQuizQuestion extends LitElement{
 
             .question__content img{
                 object-fit: contain;
+                -webkit-user-drag: none;
             }
 
             .cards__card{

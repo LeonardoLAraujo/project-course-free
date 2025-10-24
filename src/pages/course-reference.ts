@@ -23,6 +23,7 @@ export default class CouseReference extends LitElement{
             .reference img{
                 position: absolute;
                 width: 100%;
+                -webkit-user-drag: none;
             }
             
             .reference__rectangle,

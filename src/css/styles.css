@@ -6,4 +6,5 @@
     width: 895px;
     height: 700px;
     overflow: hidden;
+    -webkit-user-drag: none;
 }
