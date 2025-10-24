@@ -108,7 +108,7 @@ export default class NomeClass extends LitElement{
                 background-color: #031B30;
                 border-radius: 50%;
                 position: absolute;
-                bottom: 47px;
+                bottom: 32px;
                 right: 23px;
                 cursor: pointer;
                 transition: all 0.3s cubic-bezier(0.55, 0.055, 0.675, 0.19);

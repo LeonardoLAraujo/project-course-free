@@ -6,6 +6,9 @@ import "./pages/course-cerebro";
 import "./components/course-button-back";
 import "./pages/course-possibility";
 import "./bitmap-vector/bitmap-vector";
+import "./pages/course-quiz";
+import "./pages/course-quiz-question";
+import "./pages/course-reference";
 import "./color-modes/color-modes";
 import "./pages/course-quiz";
 import "./pages/course-quiz-question";
@@ -239,6 +242,7 @@ export default class FreeCourse extends LitElement{
                 <color-modes></color-modes>
                 <course-quiz></course-quiz>
                 <course-quiz-question></course-quiz-question>
+                <course-reference></course-reference>
             </div>
             <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
             <button @click=${this.applyTransitionNext}>Slide >></button>

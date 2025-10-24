@@ -4,6 +4,7 @@ import QUIZ_BALL from "../images/quizBall.png";
 import "../components/course-button";
 import CourseButton from '../components/course-button';
 import DIVISOR from "../images/divisor.png";
+import "../components/course-button-back";
 
 type Quiz = {
     title: string,
@@ -42,6 +43,7 @@ export default class CourseQuizQuestion extends LitElement{
                 padding: 0rem 2rem;
                 display: flex;
                 flex-direction: column;
+                position: relative;
             }
 
             .question__content{
@@ -138,6 +140,12 @@ export default class CourseQuizQuestion extends LitElement{
                 font-size: 32px;
                 color: #353535;
             }
+
+            course-button-back{
+                position: absolute;
+                top: 10px;
+                left: 10px;
+            }
         `;
     }   
 
@@ -193,6 +201,7 @@ export default class CourseQuizQuestion extends LitElement{
     protected override render(): TemplateResult{
         return html`
             <div class="question">
+                <course-button-back></course-button-back>
                 <div class="question__content">
                     <div class="content__introduction">
                         <div>
