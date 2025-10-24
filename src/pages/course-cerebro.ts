@@ -122,7 +122,7 @@ export default class NomeClass extends LitElement{
             .cerebro__cards{
                 gap: 10px;
                 justify-content: center;
-                display: none;
+                visibility: hidden;
             }
 
             .cerebro__content{
@@ -213,9 +213,6 @@ export default class NomeClass extends LitElement{
                 display: flex;
                 justify-content: center;
                 align-items: center;
-            }
-
-            .introductionCerebroOpenCards{
                 margin-bottom: -5rem;
             }
 
@@ -240,7 +237,8 @@ export default class NomeClass extends LitElement{
             }
 
             .openCard{
-                display: flex;
+                visibility: visible;
+                animation: slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) forwards;
             }
 
            @keyframes scale-in-right {
@@ -323,7 +321,6 @@ export default class NomeClass extends LitElement{
     }
 
     private _openCard(): void {
-        this._cerebro__cards.style.animation = "slide-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both";
         this._cerebro__cards.classList.toggle("openCard");
         this._introductionCerebro.classList.toggle("introductionCerebroOpenCards");
     }
