@@ -2,7 +2,6 @@ import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
 import { customElement } from 'lit/decorators.js';
 import BACKGROUND_HOME from "../images/home.png";
 import "../components/course-button";
-import FreeCourse from '../free-course';
 
 @customElement('course-home')
 export default class CourseHome extends LitElement{
@@ -34,7 +33,7 @@ export default class CourseHome extends LitElement{
                 }
             </style>
             <div class="home">
-                <course-button .onPressed=${() => {FreeCourse.instance.applyTransitionNext()}}></course-button>
+                <course-button></course-button>
             </div>
         `;
     }

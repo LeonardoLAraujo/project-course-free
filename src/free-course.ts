@@ -34,6 +34,7 @@ export default class FreeCourse extends LitElement{
                 width: fit-content;
                 height: 100%;
                 transition: left 0.5s ease-out;
+                overflow: hidden;
             }
 
             .free-course > * {
@@ -225,11 +226,6 @@ export default class FreeCourse extends LitElement{
                 <course-cerebro></course-cerebro>
                 <course-possibility></course-possibility>
                 <bitmap-vector></bitmap-vector>
-                <div class="test azul"></div>
-                <div class="test yellow"></div>
-                <div class="test orange"></div>
-                <div class="test grey"></div>
-                <div class="test red"></div>
             </div>
             <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
             <button @click=${this.applyTransitionNext}>Slide >></button>
