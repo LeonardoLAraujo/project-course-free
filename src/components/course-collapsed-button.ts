@@ -32,10 +32,15 @@ export default class CourseCollapsedButton extends LitElement{
                 justify-content: space-between;
                 box-shadow: 0 4px 4px 0 #00000025;
                 margin-bottom: 4px;
+                cursor: pointer;
             }
 
             .course-collapsed-button__header:hover{
                 background-color: #3C97FC;
+            }
+
+            .header__text{
+                max-width: 422px;
             }
 
             .header__button{
@@ -52,13 +57,13 @@ export default class CourseCollapsedButton extends LitElement{
                 font-size: 14px;
                 font-family: RobotoLight;
                 overflow: hidden;
-                transition: height 0.5s ease-in-out;
+                transition: height 0.3s ease-out;
                 padding: 0 20px;
             }
 
             .text__text{
                 margin: 0;
-                height: 135px;
+                max-height: 116px;
                 overflow: auto;
             }
 
@@ -146,9 +151,9 @@ export default class CourseCollapsedButton extends LitElement{
 
             </style>
             <div class="course-collapsed-button">
-                <div class="course-collapsed-button__header">
-                    ${this.label}
-                    <div class="header__button" @click=${this.toogleCollapsed}>
+                <div class="course-collapsed-button__header" @click=${this.toogleCollapsed}>
+                    <div class="header__text">${this.label}</div>
+                    <div class="header__button">
                         <ecv-icon 
                             .icon=${IconTypes.Add}
                             .iconStyle=${{

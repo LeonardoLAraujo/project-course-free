@@ -159,11 +159,15 @@ export default class InitialConcept extends LitElement{
 
         return html`
             ${this.collapsedData.map(data => html`<course-collapsed-button label=${data.label} .text=${data.text}></course-collapsed-button>`)}
-            <div class="rightSide__advanceButton">
-                <course-button .onPressed=${() => {
-                    this.advance();
-                }}></course-button>
-            </div>
+        `;
+    }
+
+    protected createAdvanceButton(): TemplateResult {
+
+        return html`
+            <course-button .onPressed=${() => {
+                this.advance();
+            }}></course-button>
         `;
     }
 
@@ -192,6 +196,9 @@ export default class InitialConcept extends LitElement{
                         mas você sabe diferenciá-las?
                     </p>
                     ${this.createCollapsedButtons()}
+                    <div class="rightSide__advanceButton">
+                        ${this.createAdvanceButton()}
+                    </div>
                 </div>
             </div>
         `;

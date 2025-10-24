@@ -6,6 +6,7 @@ import "./pages/course-cerebro";
 import "./components/course-button-back";
 import "./pages/course-possibility";
 import "./bitmap-vector/bitmap-vector";
+import "./color-modes/color-modes";
 
 export enum TransitionType {
     SlideTransition,
@@ -27,6 +28,9 @@ export default class FreeCourse extends LitElement{
                 height: 700px;
                 overflow: hidden;
                 position: relative;
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
             }
 
             .free-course{
@@ -43,6 +47,9 @@ export default class FreeCourse extends LitElement{
                 display: inherit;
                 flex-shrink: 0;
                 overflow: hidden;
+                -webkit-user-select: none;
+                user-select: none;
+                -webkit-user-drag: none;
             }
 
             .test.azul{
@@ -227,6 +234,7 @@ export default class FreeCourse extends LitElement{
                 <course-cerebro></course-cerebro>
                 <course-possibility></course-possibility>
                 <bitmap-vector></bitmap-vector>
+                <color-modes></color-modes>
             </div>
             <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
             <button @click=${this.applyTransitionNext}>Slide >></button>
