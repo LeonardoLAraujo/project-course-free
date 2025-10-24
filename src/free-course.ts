@@ -234,7 +234,8 @@ export default class FreeCourse extends LitElement{
                 <course-cerebro></course-cerebro>
                 <course-possibility></course-possibility>
                 <bitmap-vector></bitmap-vector>
-                <color-modes></color-modes>
+                <course-quiz></course-quiz>
+                <course-quiz-question></course-quiz-question>
             </div>
             <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
             <button @click=${this.applyTransitionNext}>Slide >></button>
