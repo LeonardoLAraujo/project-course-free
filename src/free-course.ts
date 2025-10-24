@@ -33,6 +33,7 @@ export default class FreeCourse extends LitElement{
                 width: fit-content;
                 height: 100%;
                 transition: left 0.5s ease-out;
+                overflow: hidden;
             }
 
             .free-course > * {
@@ -219,10 +220,10 @@ export default class FreeCourse extends LitElement{
 
             </style>
             <div class="free-course">
-                <course-possibility></course-possibility>
                 <course-home></course-home>
                 <initial-concept></initial-concept>
                 <course-cerebro></course-cerebro>
+                <course-possibility></course-possibility>
                 <div class="test azul"></div>
                 <div class="test yellow"></div>
                 <div class="test orange"></div>
