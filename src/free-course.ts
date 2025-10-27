@@ -10,6 +10,7 @@ import "./pages/course-quiz";
 import "./pages/course-quiz-question";
 import "./pages/course-reference";
 import "./pages/color-modes/color-modes";
+import "./pages/interactive-object/interactive-object";
 import "./pages/course-quiz";
 import "./pages/course-quiz-question";
 
@@ -240,13 +241,11 @@ export default class FreeCourse extends LitElement{
                 <course-possibility></course-possibility>
                 <bitmap-vector></bitmap-vector>
                 <color-modes></color-modes>
+                <interactive-object></interactive-object>
                 <course-quiz></course-quiz>
                 <course-quiz-question></course-quiz-question>
                 <course-reference></course-reference>
             </div>
-            <!--<button @click=${this.applyTransitionPreviuos}>Slide <<</button>
-            <button @click=${this.applyTransitionNext}>Slide >></button>
-            <button @click=${this.toogleTransitionType}>Change TransitionType</button>-->
         `;
     }
 

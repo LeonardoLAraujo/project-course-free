@@ -27,8 +27,8 @@ export default class BitmapVector extends InitialConcept{
 
             course-button-back{
                 position: absolute;
-                left: 22px;
-                top: 35px;
+                left: 26px;
+                top: 26px;
                 grid-area: left-side;
             }
 
@@ -63,10 +63,10 @@ export default class BitmapVector extends InitialConcept{
 
             .bitmap-vector__rightTitle{
                 font-family: RobotoBold;
-                font-family: 20px;
+                font-size: 20px;
                 grid-area: right-side;
-                left: 313px;
-                top: 47px;
+                top: 31px;
+                position: absolute;
             }
 
             .bitmap-vector__rightText{
