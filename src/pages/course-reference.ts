@@ -51,6 +51,10 @@ export default class CouseReference extends LitElement{
                 width: 80%;
             }
 
+            .reference__text a {
+                color: #FF4101;
+            }
+
             .reference__rectangle{
                 width: 236px;
                 height: 37px;
@@ -62,15 +66,15 @@ export default class CouseReference extends LitElement{
     }
 
     @state()
-    private _listReferences: Array<string> = [
-        "MASSACHUSETTS INSTITUTE OF TECHNOLOGY (Estados Unidos da América). In the blink of an eye. Disponível em: <http://news.mit.edu/2014/in-the-blink-of-an-eye-0116>. Acesso em: 10 jan. 2020.",
-        "LEWGOY, Júlia. Pantone divulga qual será a cor de 2019. Exame Abril. São Paulo, p. 1-1. 10 dez. 2018. Disponível em: <https://exame.abril.com.br/estilo-de-vida/pantone-divulga-qual-sera-a-cor-de-2019/>. Acesso em: 12 jan. 2020.",
-        "RAIMES, Jonathan et BHASKARAN, Lakshmi. Design retrô: 100 anos de design gráfico. Trad. Cláudio Carina. São Paulo: Editora Senac São Paulo, 2007. ",
-        "FERNANDES, Amaury. Fundamentos da produção gráfica. Rio de Janeiro: Livraria Rubio, 2003. BANKS, Tom Fraser Adam. O guia completo da cor. Trad. Renata Botini. São Paulo: Senac São Paulo, 2007."
+    private _listReferences: Array<string | TemplateResult> = [
+        html`MASSACHUSETTS INSTITUTE OF TECHNOLOGY (Estados Unidos da América). In the blink of an eye. Disponível em: <<a href="http://news.mit.edu/2014/in-the-blink-of-an-eye-0116" target="_blank">http://news.mit.edu/2014/in-the-blink-of-an-eye-0116</a>>. Acesso em: 10 jan. 2020.`,
+        html`LEWGOY, Júlia. Pantone divulga qual será a cor de 2019. Exame Abril. São Paulo, p. 1-1. 10 dez. 2018. Disponível em: <<a href="https://exame.com/casual/pantone-divulga-qual-sera-a-cor-de-2019/" target="_blank">https://exame.com/casual/pantone-divulga-qual-sera-a-cor-de-2019/</a>>. Acesso em: 12 jan. 2020.`,
+        "RAIMES, Jonathan et BHASKARAN, Lakshmi. Design retrô: 100 anos de design gráfico. Trad. Cláudio Carina. São Paulo: Editora Senac São Paulo, 2007.",
+        "FERNANDES, Amaury. Fundamentos da produção gráfica. Rio de Janeiro: Livraria Rubio, 2003. BANKS, Tom Fraser Adam. O guia completo da cor. Trad. Renata Botini. São Paulo: Senac São Paulo, 2007."
     ];
 
     private _genereteReferences(): Array<TemplateResult> {
-        return this._listReferences.map((reference: string) => html`<p>${reference}</p>`)
+        return this._listReferences.map((reference: string | TemplateResult) => html`<p>${reference}</p>`)
     }
 
     protected override render(): TemplateResult{
