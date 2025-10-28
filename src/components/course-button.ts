@@ -1,5 +1,5 @@
 import {LitElement, html, css, TemplateResult, CSSResult} from 'lit';
-import { customElement } from 'lit/decorators.js';
+import { customElement, property } from 'lit/decorators.js';
 import FreeCourse from '../free-course';
 
 @customElement('course-button')
@@ -27,10 +27,12 @@ export default class CourseButton extends LitElement{
         `;
     }
 
+    @property({type: String})
+    label: string = "Avançar";
 
     protected override render(): TemplateResult{
         return html`
-            <button @click=${() => {FreeCourse.instance.applyTransitionNext()}}>Avançar</button>
+            <button @click=${() => {FreeCourse.instance.applyTransitionNext()}}>${this.label}</button>
         `;
     }
 

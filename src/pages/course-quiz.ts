@@ -44,7 +44,7 @@ export default class CourseQuiz extends LitElement{
             </style>
             <div class="quiz">
                 <course-button-back></course-button-back>
-                <course-button></course-button>
+                <course-button label="Entrar"></course-button>
             </div>
         `;
     }
